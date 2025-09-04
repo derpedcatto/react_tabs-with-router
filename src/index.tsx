@@ -1,9 +1,14 @@
 import { createRoot } from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <HashRouter>
+// Based on comment - 'Also requires <html class="has-navbar-fixed-top">'
+document.documentElement.classList.add('has-navbar-fixed-top');
+
+const Root = () => (
+  <Router>
     <App />
-  </HashRouter>,
+  </Router>
 );
+
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);
