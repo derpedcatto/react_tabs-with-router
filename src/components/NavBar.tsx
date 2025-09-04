@@ -1,6 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
+const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('navbar-item', {
+    'is-active': isActive,
+  });
+
 export const NavBar = () => {
   return (
     <nav
@@ -9,20 +14,10 @@ export const NavBar = () => {
     >
       <div className="container">
         <div className="navbar-brand">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              classNames('navbar-item', { 'is-active': isActive })
-            }
-          >
+          <NavLink to="/" className={getNavLinkClass}>
             Home
           </NavLink>
-          <NavLink
-            to="/tabs"
-            className={({ isActive }) =>
-              classNames('navbar-item', { 'is-active': isActive })
-            }
-          >
+          <NavLink to="/tabs" className={getNavLinkClass}>
             Tabs
           </NavLink>
         </div>
